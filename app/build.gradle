@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 android {
     sourceSets {
@@ -28,6 +29,8 @@ repositories {
     flatDir {
         dirs 'libs'
     }
+    maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
+    mavenCentral()
 }
 
 // 强制让所有第三方类库支持本版本'28.0.0-alpha3'
@@ -66,5 +69,6 @@ dependencies {
 
     implementation name: 'SMSSDK-2.1.2', ext: 'aar'
     implementation name: 'SMSSDKGUI-2.1.2', ext: 'aar'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
 }

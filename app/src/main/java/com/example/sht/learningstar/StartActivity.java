@@ -20,17 +20,12 @@ import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 
-public class StartActivity extends AppCompatActivity implements View.OnClickListener{
+public class StartActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView tv_regist;
     EditText et_login_user, et_login_password;
     Button bt_login;
     Button bt_mobile_login;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
