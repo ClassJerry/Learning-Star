@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.sht.homework">
+    package="com.example.sht.learningstar">
 
     <!-- 允许联网 -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -44,7 +44,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".StartActivity"
+            android:name="com.example.sht.learningstar.StartActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -52,34 +52,34 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" >
+        <activity android:name="com.example.sht.learningstar.MainActivity" >
 
         </activity>
         <activity
-            android:name=".Multimedia"
+            android:name="com.example.sht.learningstar.Multimedia"
             android:label="@string/title_activity_multimedia" />
-        <activity android:name=".Web" />
-        <activity android:name=".TiebaActivity" />
-        <activity android:name=".ZhihuActivity" />
-        <activity android:name=".JqActivity" />
-        <activity android:name=".RegistActivity" />
-        <activity android:name=".TakePhoto" />
-        <activity android:name=".Toolbar_eat" />
-        <activity android:name=".Toolbar_game" />
-        <activity android:name=".Toolbar_hlju" />
-        <activity android:name=".Music.MusicFirst" />
-        <activity android:name=".Music.MusicSecond" />
-        <activity android:name=".Music.MusicThird" />
-        <activity android:name=".Music.MusicForth" />
-        <activity android:name=".EnvironmentCenter.IRemenber" />
-        <activity android:name=".EnvironmentCenter.CSDN" />
-        <activity android:name=".MainSide.XinLanWeiBo" />
-        <activity android:name=".EnvironmentCenter.Microsoft" />
-        <activity android:name=".EnvironmentCenter.Pexels" />
-        <activity android:name=".MainSide.KeXie" />
-        <activity android:name=".MainSide.NanFangZhouMo" />
-        <activity android:name=".MainSide.TexntMaps" />
-        <activity android:name=".MobileLoad.MobileLoad"/>
+        <activity android:name="com.example.sht.learningstar.Web" />
+        <activity android:name="com.example.sht.learningstar.TiebaActivity" />
+        <activity android:name="com.example.sht.learningstar.ZhihuActivity" />
+        <activity android:name="com.example.sht.learningstar.JqActivity" />
+        <activity android:name="com.example.sht.learningstar.RegistActivity" />
+        <activity android:name="com.example.sht.learningstar.TakePhoto" />
+        <activity android:name="com.example.sht.learningstar.Toolbar_eat" />
+        <activity android:name="com.example.sht.learningstar.Toolbar_game" />
+        <activity android:name="com.example.sht.learningstar.Toolbar_hlju" />
+        <activity android:name="com.example.sht.learningstar.Music.MusicFirst" />
+        <activity android:name="com.example.sht.learningstar.Music.MusicSecond" />
+        <activity android:name="com.example.sht.learningstar.Music.MusicThird" />
+        <activity android:name="com.example.sht.learningstar.Music.MusicForth" />
+        <activity android:name="com.example.sht.learningstar.EnvironmentCenter.IRemenber" />
+        <activity android:name="com.example.sht.learningstar.EnvironmentCenter.CSDN" />
+        <activity android:name="com.example.sht.learningstar.MainSide.XinLanWeiBo" />
+        <activity android:name="com.example.sht.learningstar.EnvironmentCenter.Microsoft" />
+        <activity android:name="com.example.sht.learningstar.EnvironmentCenter.Pexels" />
+        <activity android:name="com.example.sht.learningstar.MainSide.KeXie" />
+        <activity android:name="com.example.sht.learningstar.MainSide.NanFangZhouMo" />
+        <activity android:name="com.example.sht.learningstar.MainSide.TexntMaps" />
+        <activity android:name="com.example.sht.learningstar.MobileLoad.MobileLoad"/>
     </application>
 
 </manifest>
