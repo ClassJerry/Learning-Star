@@ -29,7 +29,7 @@ class StartActivity : AppCompatActivity(), View.OnClickListener {
     /**
      * 用户名输入框
      */
-    private var etUserName: EditText? = null
+    private var etUsername: EditText? = null
 
     /**
      * 密码输入框
@@ -71,13 +71,13 @@ class StartActivity : AppCompatActivity(), View.OnClickListener {
         tvRegister = findViewById(R.id.tv_register)
         btnAccountLogin = findViewById(R.id.btn_account_login)
         btnMobileLogin = findViewById(R.id.btn_mobile_login)
-        etUserName = findViewById(R.id.et_username)
+        etUsername = findViewById(R.id.et_username)
         etPassword = findViewById(R.id.et_password)
 
         // 设置监听器
-        tvRegister!!.setOnClickListener(this)
-        btnAccountLogin!!.setOnClickListener(this)
-        btnMobileLogin!!.setOnClickListener(this)
+        tvRegister?.setOnClickListener(this)
+        btnAccountLogin?.setOnClickListener(this)
+        btnMobileLogin?.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -94,21 +94,21 @@ class StartActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.btn_account_login -> {
                 // 用户名和密码判空
-                val userName = etUserName!!.text.toString()
-                if (userName.isBlank()) {
+                val username = etUsername?.text
+                if (username.isNullOrBlank()) {
                     Toast.makeText(this, getString(R.string.username_can_not_be_empty), Toast.LENGTH_SHORT).show()
                     return
                 }
-                val userPassword = etPassword!!.text.toString().trim()
-                if (userPassword.isBlank()) {
+                val password = etPassword?.text
+                if (password.isNullOrBlank()) {
                     Toast.makeText(this, getString(R.string.password_can_not_be_empty), Toast.LENGTH_SHORT).show()
                     return
                 }
 
                 // 使用 BmobSDK 提供的登录功能
                 val bmobUser = BmobUser()
-                bmobUser.username = userName
-                bmobUser.setPassword(userPassword)
+                bmobUser.username = username.toString()
+                bmobUser.setPassword(password.toString())
                 bmobUser.login(object : SaveListener<BmobUser>() {
                     override fun done(bmobUser: BmobUser?, e: BmobException?) {
                         if (e == null) {
