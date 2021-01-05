@@ -11,4 +11,9 @@
     <string name="password_can_not_be_empty">密码不能为空</string>
     <string name="login_successfully">登录成功</string>
     <string name="login_failure">登录失败</string>
+    <string name="register">没有账户？/注册</string>
+    <string name="account_login">账号登录</string>
+    <string name="mobile_login">手机登录</string>
+    <string name="username">用户名</string>
+    <string name="password">密码</string>
 </resources>

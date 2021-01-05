@@ -8,27 +8,29 @@
 
     <TextView
         android:id="@+id/tv_register"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#00000000"
-        android:text="没有账户？/注册"
-        android:textColor="#e6ffffff"/>
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/register"
+        android:textColor="#e62077ff"/>
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/btn_account_login"
         android:layout_width="280dp"
         android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="95dp"
         android:background="@drawable/shape_button"
-        android:text="账号登录"
+        android:text="@string/account_login"
         android:textColor="#FFFFFFFF"
         android:textSize="15sp" />
 
     <Button
-        android:id="@+id/monile_login"
+        android:id="@+id/btn_mobile_login"
         android:layout_width="280dp"
         android:layout_height="40dp"
         android:layout_alignParentBottom="true"
@@ -37,29 +39,34 @@
         android:textColor="#FFFFFFFF"
         android:background="@drawable/shape_button"
         android:textSize="15sp"
-        android:text="手机登录" />
+        android:text="@string/mobile_login" />
 
     <EditText
-        android:id="@+id/et_login_user"
-        android:layout_width="286dp"
+        android:id="@+id/et_username"
+        android:layout_width="288dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="191dp"
-        android:hint="用户名"
+        android:hint="@string/username"
+        android:inputType="text"
+        android:maxLength="16"
         android:textColorHint="#bfffffff"
-        android:textColor="#ffffffff"/>
+        android:textColor="#ffffffff"
+        android:importantForAutofill="no" />
 
     <EditText
-        android:id="@+id/et_login_password"
+        android:id="@+id/et_password"
         android:layout_width="288dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/et_login_user"
+        android:layout_below="@+id/et_username"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="-191dp"
-        android:hint="密码"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:maxLength="16"
         android:textColorHint="#bfffffff"
-        android:textColor="#ffffffff" />
-
+        android:textColor="#ffffffff"
+        android:importantForAutofill="no" />
 
 </RelativeLayout>

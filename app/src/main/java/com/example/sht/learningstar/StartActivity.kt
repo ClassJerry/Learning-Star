@@ -39,7 +39,7 @@ class StartActivity : AppCompatActivity(), View.OnClickListener {
     /**
      * 账号登录
      */
-    private var btnLogin: Button? = null
+    private var btnAccountLogin: Button? = null
 
     /**
      * 手机登录
@@ -69,14 +69,14 @@ class StartActivity : AppCompatActivity(), View.OnClickListener {
 
         // 绑定 view
         tvRegister = findViewById(R.id.tv_register)
-        btnLogin = findViewById(R.id.login)
-        btnMobileLogin = findViewById(R.id.monile_login)
-        etUserName = findViewById(R.id.et_login_user)
-        etPassword = findViewById(R.id.et_login_password)
+        btnAccountLogin = findViewById(R.id.btn_account_login)
+        btnMobileLogin = findViewById(R.id.btn_mobile_login)
+        etUserName = findViewById(R.id.et_username)
+        etPassword = findViewById(R.id.et_password)
 
         // 设置监听器
         tvRegister!!.setOnClickListener(this)
-        btnLogin!!.setOnClickListener(this)
+        btnAccountLogin!!.setOnClickListener(this)
         btnMobileLogin!!.setOnClickListener(this)
     }
 
@@ -87,12 +87,12 @@ class StartActivity : AppCompatActivity(), View.OnClickListener {
                 val registerIntent = Intent(this, RegistActivity::class.java)
                 startActivity(registerIntent)
             }
-            R.id.monile_login -> {
+            R.id.btn_mobile_login -> {
                 // 跳转手机登录界面
                 val mobileLoginIntent = Intent(this, MobileLoad::class.java)
                 startActivity(mobileLoginIntent)
             }
-            R.id.login -> {
+            R.id.btn_account_login -> {
                 // 用户名和密码判空
                 val userName = etUserName!!.text.toString()
                 if (userName.isBlank()) {
