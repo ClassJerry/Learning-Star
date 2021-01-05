@@ -18,6 +18,7 @@ import cn.bmob.v3.listener.SaveListener
 import com.example.sht.learningstar.MobileLoad.MobileLoad
 
 class StartActivity : AppCompatActivity(), View.OnClickListener {
+
     // region view
 
     /**
@@ -51,7 +52,6 @@ class StartActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_start)
 
         // 去掉标题
         requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -61,6 +61,8 @@ class StartActivity : AppCompatActivity(), View.OnClickListener {
             decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
             window.statusBarColor = Color.TRANSPARENT
         }
+
+        setContentView(R.layout.activity_start)
 
         // 注册云存储
         Bmob.initialize(this, "bd4814e57ed9c8f00aa0d119c5676cf9")
@@ -78,41 +80,45 @@ class StartActivity : AppCompatActivity(), View.OnClickListener {
         btnMobileLogin!!.setOnClickListener(this)
     }
 
-    override fun onClick(v: View) {
-        when (v.id) {
+    override fun onClick(v: View?) {
+        when (v?.id) {
             R.id.tv_register -> {
+                // 跳转注册界面
                 val registerIntent = Intent(this, RegistActivity::class.java)
                 startActivity(registerIntent)
             }
             R.id.monile_login -> {
+                // 跳转手机登录界面
                 val mobileLoginIntent = Intent(this, MobileLoad::class.java)
                 startActivity(mobileLoginIntent)
             }
             R.id.login -> {
+                // 用户名和密码判空
                 val userName = etUserName!!.text.toString()
                 if (userName.isBlank()) {
-                    Toast.makeText(this, "账号不能为空", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.username_can_not_be_empty), Toast.LENGTH_SHORT).show()
                     return
                 }
                 val userPassword = etPassword!!.text.toString().trim()
                 if (userPassword.isBlank()) {
-                    Toast.makeText(this, "密码不能为空", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.password_can_not_be_empty), Toast.LENGTH_SHORT).show()
                     return
                 }
-                val bu2 = User()
-                bu2.username = userName
-                bu2.setPassword(userPassword)
-                // 使用BmobSDK提供的登录功能
-                bu2.login(object : SaveListener<BmobUser>() {
-                    override fun done(bmobUser: BmobUser, e: BmobException?) {
+
+                // 使用 BmobSDK 提供的登录功能
+                val bmobUser = BmobUser()
+                bmobUser.username = userName
+                bmobUser.setPassword(userPassword)
+                bmobUser.login(object : SaveListener<BmobUser>() {
+                    override fun done(bmobUser: BmobUser?, e: BmobException?) {
                         if (e == null) {
-                            Toast.makeText(this@StartActivity, "登陆成功", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@StartActivity, getString(R.string.login_successfully), Toast.LENGTH_SHORT).show()
+
+                            // 跳转主界面
                             val loginIntent = Intent(this@StartActivity, MainActivity::class.java)
                             startActivity(loginIntent)
-                            //通过BmobUser user = BmobUser.getCurrentUser()获取登录成功后的本地用户信息
-                            //如果是自定义用户对象MyUser，可通过MyUser user = BmobUser.getCurrentUser(MyUser.class)获取自定义用户信息
                         } else {
-                            Toast.makeText(this@StartActivity, "登陆失败", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@StartActivity, getString(R.string.login_failure), Toast.LENGTH_SHORT).show()
                         }
                     }
                 })

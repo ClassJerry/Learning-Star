@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StartActivity"
-    android:background="@drawable/start_background">
+    android:background="@drawable/start_background"
+    tools:context=".StartActivity">
 
     <TextView
         android:id="@+id/tv_register"
@@ -12,7 +12,7 @@
         android:layout_height="30dp"
         android:layout_alignParentBottom="true"
         android:background="#00000000"
-        android:text="   没有账户？/注册"
+        android:text="没有账户？/注册"
         android:textColor="#e6ffffff"/>
 
     <Button

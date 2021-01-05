@@ -5,4 +5,10 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_multimedia">Multimedia</string>
     <string name="title_activity_find">Find</string>
+
+    <!-- 用户登录 -->
+    <string name="username_can_not_be_empty">用户名不能为空</string>
+    <string name="password_can_not_be_empty">密码不能为空</string>
+    <string name="login_successfully">登录成功</string>
+    <string name="login_failure">登录失败</string>
 </resources>

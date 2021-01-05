@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 
 import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 
@@ -50,12 +51,12 @@ public class RegistActivity extends AppCompatActivity implements View.OnClickLis
                     return;
                 }
                 // 使用BmobSDK提供的注册功能
-                User myUser=new User();
+                BmobUser myUser=new BmobUser();
                 myUser.setUsername(user_num);
                 myUser.setPassword(user_password);
-                myUser.signUp(new SaveListener<User>() {
+                myUser.signUp(new SaveListener<BmobUser>() {
                     @Override
-                    public void done(User s, BmobException e) {
+                    public void done(BmobUser s, BmobException e) {
                         if(e==null){
                             Toast.makeText(RegistActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
                         }else{
