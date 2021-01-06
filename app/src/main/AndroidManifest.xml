@@ -64,7 +64,7 @@
         <activity android:name="com.example.sht.learningstar.TiebaActivity" />
         <activity android:name="com.example.sht.learningstar.ZhihuActivity" />
         <activity android:name="com.example.sht.learningstar.JqActivity" />
-        <activity android:name="com.example.sht.learningstar.RegistActivity" />
+        <activity android:name="com.example.sht.learningstar.RegisterActivity" />
         <activity android:name="com.example.sht.learningstar.TakePhoto" />
         <activity android:name="com.example.sht.learningstar.Toolbar_eat" />
         <activity android:name="com.example.sht.learningstar.Toolbar_game" />

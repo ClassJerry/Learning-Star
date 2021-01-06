@@ -6,7 +6,6 @@ import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import android.view.Window
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -52,20 +51,16 @@ class StartActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_start)
 
-        // 去掉标题
-        requestWindowFeature(Window.FEATURE_NO_TITLE)
-
-        if (Build.VERSION.SDK_INT >= 21) {
-            val decorView = window.decorView
-            decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+        // 布局进入状态栏
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
             window.statusBarColor = Color.TRANSPARENT
         }
 
-        setContentView(R.layout.activity_start)
-
-        // 注册云存储
-        Bmob.initialize(this, "bd4814e57ed9c8f00aa0d119c5676cf9")
+        // 初始化云存储
+        Bmob.initialize(this, getString(R.string.app_key))
 
         // 绑定 view
         tvRegister = findViewById(R.id.tv_register)
@@ -84,7 +79,7 @@ class StartActivity : AppCompatActivity(), View.OnClickListener {
         when (v?.id) {
             R.id.tv_register -> {
                 // 跳转注册界面
-                val registerIntent = Intent(this, RegistActivity::class.java)
+                val registerIntent = Intent(this, RegisterActivity::class.java)
                 startActivity(registerIntent)
             }
             R.id.btn_mobile_login -> {
