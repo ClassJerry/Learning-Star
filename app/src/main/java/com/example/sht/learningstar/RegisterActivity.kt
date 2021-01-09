@@ -66,7 +66,7 @@ class RegisterActivity : AppCompatActivity() {
         btnRegister = findViewById(R.id.btn_register)
         btnCancel = findViewById(R.id.btn_cancel)
 
-        // 设置监听器
+        // 设置点击监听器
         btnRegister?.setOnClickListener(onClickListener)
         btnCancel?.setOnClickListener(onClickListener)
     }
@@ -75,6 +75,9 @@ class RegisterActivity : AppCompatActivity() {
 
     // region lambda
 
+    /**
+     * 点击监听器
+     */
     private val onClickListener: (View?) -> Unit = onClick@ {
         if (it?.id == R.id.btn_register) {
             // 用户名和密码判空

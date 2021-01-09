@@ -75,7 +75,7 @@ class LoginActivity : AppCompatActivity() {
         etUsername = findViewById(R.id.et_username)
         etPassword = findViewById(R.id.et_password)
 
-        // 设置监听器
+        // 设置点击监听器
         tvRegister?.setOnClickListener(onClickListener)
         btnAccountLogin?.setOnClickListener(onClickListener)
         btnMobileLogin?.setOnClickListener(onClickListener)
@@ -85,6 +85,9 @@ class LoginActivity : AppCompatActivity() {
 
     // region lambda
 
+    /**
+     * 点击监听器
+     */
     private val onClickListener: (View?) -> Unit = onClick@ {
         when (it?.id) {
             R.id.tv_register -> {
