@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/start_background"
-    tools:context=".StartActivity">
+    tools:context=".LoginActivity">
 
     <TextView
         android:id="@+id/tv_register"
@@ -14,7 +14,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginBottom="10dp"
-        android:text="@string/register"
+        android:text="@string/no_account_and_register"
         android:textColor="#e62077ff"/>
 
     <Button
@@ -49,9 +49,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="191dp"
         android:hint="@string/username"
+        android:textColorHint="#bfffffff"
         android:inputType="text"
         android:maxLength="16"
-        android:textColorHint="#bfffffff"
         android:textColor="#ffffffff"
         android:importantForAutofill="no" />
 
@@ -63,9 +63,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="-191dp"
         android:hint="@string/password"
+        android:textColorHint="#bfffffff"
         android:inputType="textPassword"
         android:maxLength="16"
-        android:textColorHint="#bfffffff"
         android:textColor="#ffffffff"
         android:importantForAutofill="no" />
 

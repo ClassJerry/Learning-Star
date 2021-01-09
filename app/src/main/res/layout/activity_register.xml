@@ -1,55 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity"
-    android:background="@drawable/zanding">
+    android:background="@drawable/girl"
+    tools:context=".RegisterActivity">
 
     <EditText
-        android:id="@+id/et_regist_user"
+        android:id="@+id/et_register_username"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:hint="用户名"
-        tools:layout_editor_absoluteX="81dp"
-        tools:layout_editor_absoluteY="226dp"
-        android:textColorHint="#bfffffff" />
+        android:hint="@string/username"
+        android:textColorHint="#bfffffff"
+        android:inputType="text"
+        android:maxLength="16"
+        android:textColor="#ffffffff"
+        android:importantForAutofill="no" />
 
     <EditText
-        android:id="@+id/et_regist_password"
+        android:id="@+id/et_register_password"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="208dp"
-        android:hint="密码"
-        tools:layout_editor_absoluteX="82dp"
-        tools:layout_editor_absoluteY="157dp"
-        android:textColorHint="#bfffffff" />
+        android:hint="@string/password"
+        android:textColorHint="#bfffffff"
+        android:inputType="textPassword"
+        android:maxLength="16"
+        android:textColor="#ffffffff"
+        android:importantForAutofill="no" />
 
     <Button
-        android:id="@+id/bt_regist_save"
+        android:id="@+id/btn_register"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="122dp"
         android:background="#de4037"
-        android:text="保存"
-        tools:layout_editor_absoluteX="81dp"
-        tools:layout_editor_absoluteY="306dp" />
+        android:text="@string/register" />
 
     <Button
-        android:id="@+id/bt_regist_cancel"
+        android:id="@+id/btn_cancel"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="41dp"
         android:background="#de4037"
-        android:text="取消"
-        tools:layout_editor_absoluteX="215dp"
-        tools:layout_editor_absoluteY="306dp" />
+        android:text="@string/cancel" />
+
 </RelativeLayout>

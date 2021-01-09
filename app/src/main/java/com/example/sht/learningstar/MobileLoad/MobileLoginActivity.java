@@ -22,7 +22,7 @@ import cn.smssdk.SMSSDK;
 
 
 
-public class MobileLoad extends AppCompatActivity implements View.OnClickListener{
+public class MobileLoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     private static final String TAG = "WholeWorld";
     EditText mEditTextPhoneNumber;
@@ -127,12 +127,12 @@ public class MobileLoad extends AppCompatActivity implements View.OnClickListene
                     Log.e(TAG, "result : " + result + ", event: " + event + ", data : " + data);
                     if (result == SMSSDK.RESULT_COMPLETE) { //回调  当返回的结果是complete
                         if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) { //获取验证码
-                            Toast.makeText(MobileLoad.this, "发送验证码成功", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MobileLoginActivity.this, "发送验证码成功", Toast.LENGTH_SHORT).show();
                             Log.d(TAG, "get verification code successful.");
                         } else if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) { //提交验证码
                             Log.d(TAG, "submit code successful");
-                            Toast.makeText(MobileLoad.this, "提交验证码成功", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(MobileLoad.this, MainActivity.class);
+                            Toast.makeText(MobileLoginActivity.this, "提交验证码成功", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(MobileLoginActivity.this, MainActivity.class);
                             startActivity(intent);
                         } else {
                             Log.d(TAG, data.toString());
@@ -147,7 +147,7 @@ public class MobileLoad extends AppCompatActivity implements View.OnClickListene
                             //错误代码：  http://wiki.mob.com/android-api-%E9%94%99%E8%AF%AF%E7%A0%81%E5%8F%82%E8%80%83/
                             Log.e(TAG, "status: " + status + ", detail: " + des);
                             if (status > 0 && !TextUtils.isEmpty(des)) {
-                                Toast.makeText(MobileLoad.this, des, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MobileLoginActivity.this, des, Toast.LENGTH_SHORT).show();
                                 return;
                             }
                         } catch (Exception e) {

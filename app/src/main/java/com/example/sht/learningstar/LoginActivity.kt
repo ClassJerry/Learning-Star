@@ -14,9 +14,15 @@ import cn.bmob.v3.Bmob
 import cn.bmob.v3.BmobUser
 import cn.bmob.v3.exception.BmobException
 import cn.bmob.v3.listener.SaveListener
-import com.example.sht.learningstar.MobileLoad.MobileLoad
+import com.example.sht.learningstar.MobileLoad.MobileLoginActivity
 
-class StartActivity : AppCompatActivity(), View.OnClickListener {
+/**
+ * 登录界面
+ *
+ * @author Jerry Huang
+ * @date 2021/1/9
+ */
+class LoginActivity : AppCompatActivity() {
 
     // region view
 
@@ -51,9 +57,9 @@ class StartActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_start)
+        setContentView(R.layout.activity_login)
 
-        // 布局进入状态栏
+        // SDK 版本号大于等于 21 时，布局进入状态栏
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
             window.statusBarColor = Color.TRANSPARENT
@@ -70,13 +76,17 @@ class StartActivity : AppCompatActivity(), View.OnClickListener {
         etPassword = findViewById(R.id.et_password)
 
         // 设置监听器
-        tvRegister?.setOnClickListener(this)
-        btnAccountLogin?.setOnClickListener(this)
-        btnMobileLogin?.setOnClickListener(this)
+        tvRegister?.setOnClickListener(onClickListener)
+        btnAccountLogin?.setOnClickListener(onClickListener)
+        btnMobileLogin?.setOnClickListener(onClickListener)
     }
 
-    override fun onClick(v: View?) {
-        when (v?.id) {
+    // endregion
+
+    // region lambda
+
+    private val onClickListener: (View?) -> Unit = onClick@ {
+        when (it?.id) {
             R.id.tv_register -> {
                 // 跳转注册界面
                 val registerIntent = Intent(this, RegisterActivity::class.java)
@@ -84,7 +94,7 @@ class StartActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.btn_mobile_login -> {
                 // 跳转手机登录界面
-                val mobileLoginIntent = Intent(this, MobileLoad::class.java)
+                val mobileLoginIntent = Intent(this, MobileLoginActivity::class.java)
                 startActivity(mobileLoginIntent)
             }
             R.id.btn_account_login -> {
@@ -92,12 +102,12 @@ class StartActivity : AppCompatActivity(), View.OnClickListener {
                 val username = etUsername?.text
                 if (username.isNullOrBlank()) {
                     Toast.makeText(this, getString(R.string.username_can_not_be_empty), Toast.LENGTH_SHORT).show()
-                    return
+                    return@onClick
                 }
                 val password = etPassword?.text
                 if (password.isNullOrBlank()) {
                     Toast.makeText(this, getString(R.string.password_can_not_be_empty), Toast.LENGTH_SHORT).show()
-                    return
+                    return@onClick
                 }
 
                 // 使用 BmobSDK 提供的登录功能
@@ -105,15 +115,15 @@ class StartActivity : AppCompatActivity(), View.OnClickListener {
                 bmobUser.username = username.toString()
                 bmobUser.setPassword(password.toString())
                 bmobUser.login(object : SaveListener<BmobUser>() {
-                    override fun done(bmobUser: BmobUser?, e: BmobException?) {
-                        if (e == null) {
-                            Toast.makeText(this@StartActivity, getString(R.string.login_successfully), Toast.LENGTH_SHORT).show()
+                    override fun done(bmobUser: BmobUser, bmobException: BmobException?) {
+                        if (bmobException == null) {
+                            Toast.makeText(this@LoginActivity, getString(R.string.login_successfully), Toast.LENGTH_SHORT).show()
 
                             // 跳转主界面
-                            val loginIntent = Intent(this@StartActivity, MainActivity::class.java)
+                            val loginIntent = Intent(this@LoginActivity, MainActivity::class.java)
                             startActivity(loginIntent)
                         } else {
-                            Toast.makeText(this@StartActivity, getString(R.string.login_failure), Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@LoginActivity, getString(R.string.login_failure), Toast.LENGTH_SHORT).show()
                         }
                     }
                 })
