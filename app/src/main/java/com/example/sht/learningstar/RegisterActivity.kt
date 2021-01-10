@@ -34,6 +34,11 @@ class RegisterActivity : AppCompatActivity() {
     private var etPassword: EditText? = null
 
     /**
+     * 确认密码输入框
+     */
+    private var etConfirmationPassword: EditText? = null
+
+    /**
      * 注册按钮
      */
     private var btnRegister: Button? = null
@@ -63,6 +68,7 @@ class RegisterActivity : AppCompatActivity() {
         // 绑定 view
         etUsername = findViewById(R.id.et_register_username)
         etPassword = findViewById(R.id.et_register_password)
+        etConfirmationPassword = findViewById(R.id.et_register_confirmation_password)
         btnRegister = findViewById(R.id.btn_register)
         btnCancel = findViewById(R.id.btn_cancel)
 
@@ -80,7 +86,7 @@ class RegisterActivity : AppCompatActivity() {
      */
     private val onClickListener: (View?) -> Unit = onClick@ {
         if (it?.id == R.id.btn_register) {
-            // 用户名和密码判空
+            // 用户名、密码和确认密码判空
             val username = etUsername?.text
             if (username.isNullOrBlank()) {
                 Toast.makeText(this, getString(R.string.username_can_not_be_empty), Toast.LENGTH_SHORT).show()
@@ -89,6 +95,17 @@ class RegisterActivity : AppCompatActivity() {
             val password = etPassword?.text
             if (password.isNullOrBlank()) {
                 Toast.makeText(this, getString(R.string.password_can_not_be_empty), Toast.LENGTH_SHORT).show()
+                return@onClick
+            }
+            val confirmationPassword = etConfirmationPassword?.text
+            if (confirmationPassword.isNullOrBlank()) {
+                Toast.makeText(this, getString(R.string.confirmation_password_can_not_be_empty), Toast.LENGTH_SHORT).show()
+                return@onClick
+            }
+
+            // 检查密码和确认密码是否一致
+            if (password != confirmationPassword) {
+                Toast.makeText(this, getString(R.string.password_and_confirmation_password_are_not_the_same), Toast.LENGTH_SHORT).show()
                 return@onClick
             }
 

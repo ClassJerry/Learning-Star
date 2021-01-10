@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
     android:background="@drawable/girl"
     tools:context=".RegisterActivity">
 
@@ -10,7 +12,7 @@
         android:id="@+id/et_register_username"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_marginTop="100dp"
         android:hint="@string/username"
         android:textColorHint="#bfffffff"
         android:inputType="text"
@@ -22,10 +24,20 @@
         android:id="@+id/et_register_password"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="208dp"
+        android:layout_marginTop="50dp"
         android:hint="@string/password"
+        android:textColorHint="#bfffffff"
+        android:inputType="textPassword"
+        android:maxLength="16"
+        android:textColor="#ffffffff"
+        android:importantForAutofill="no" />
+
+    <EditText
+        android:id="@+id/et_register_confirmation_password"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:hint="@string/confirmation_password"
         android:textColorHint="#bfffffff"
         android:inputType="textPassword"
         android:maxLength="16"
@@ -36,9 +48,7 @@
         android:id="@+id/btn_register"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="122dp"
+        android:layout_marginTop="100dp"
         android:background="#de4037"
         android:text="@string/register" />
 
@@ -46,10 +56,8 @@
         android:id="@+id/btn_cancel"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="41dp"
+        android:layout_marginTop="50dp"
         android:background="#de4037"
         android:text="@string/cancel" />
 
-</RelativeLayout>
+</LinearLayout>
