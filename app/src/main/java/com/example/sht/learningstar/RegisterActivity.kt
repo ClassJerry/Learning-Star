@@ -104,7 +104,7 @@ class RegisterActivity : AppCompatActivity() {
             }
 
             // 检查密码和确认密码是否一致
-            if (password != confirmationPassword) {
+            if (password.toString() != confirmationPassword.toString()) {
                 Toast.makeText(this, getString(R.string.password_and_confirmation_password_are_not_the_same), Toast.LENGTH_SHORT).show()
                 return@onClick
             }
@@ -113,8 +113,8 @@ class RegisterActivity : AppCompatActivity() {
             val bmobUser = BmobUser()
             bmobUser.username = username.toString()
             bmobUser.setPassword(password.toString())
-            bmobUser.signUp(object : SaveListener<BmobUser>() {
-                override fun done(bmobUser: BmobUser, bmobException: BmobException?) {
+            bmobUser.signUp(object : SaveListener<BmobUser?>() {
+                override fun done(bmobUser: BmobUser?, bmobException: BmobException?) {
                     Toast.makeText(this@RegisterActivity, if (bmobException == null) getString(R.string.register_successfully) else getString(R.string.register_failure), Toast.LENGTH_SHORT).show()
                 }
             })

@@ -117,8 +117,8 @@ class LoginActivity : AppCompatActivity() {
                 val bmobUser = BmobUser()
                 bmobUser.username = username.toString()
                 bmobUser.setPassword(password.toString())
-                bmobUser.login(object : SaveListener<BmobUser>() {
-                    override fun done(bmobUser: BmobUser, bmobException: BmobException?) {
+                bmobUser.login(object : SaveListener<BmobUser?>() {
+                    override fun done(bmobUser: BmobUser?, bmobException: BmobException?) {
                         if (bmobException == null) {
                             Toast.makeText(this@LoginActivity, getString(R.string.login_successfully), Toast.LENGTH_SHORT).show()
 
