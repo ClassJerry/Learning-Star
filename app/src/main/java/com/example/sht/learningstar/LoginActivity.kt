@@ -14,7 +14,6 @@ import cn.bmob.v3.Bmob
 import cn.bmob.v3.BmobUser
 import cn.bmob.v3.exception.BmobException
 import cn.bmob.v3.listener.SaveListener
-import com.example.sht.learningstar.MobileLoad.MobileLoginActivity
 
 /**
  * 登录界面
@@ -66,7 +65,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         // 初始化云存储
-        Bmob.initialize(this, getString(R.string.app_key))
+        Bmob.initialize(this, getString(R.string.bmob_app_key))
 
         // 绑定 view
         tvRegister = findViewById(R.id.tv_register)
@@ -97,17 +96,17 @@ class LoginActivity : AppCompatActivity() {
             }
             R.id.btn_mobile_login -> {
                 // 跳转手机登录界面
-                val mobileLoginIntent = Intent(this, MobileLoginActivity::class.java)
+                val mobileLoginIntent = Intent(this, PhoneLoginActivity::class.java)
                 startActivity(mobileLoginIntent)
             }
             R.id.btn_account_login -> {
-                // 用户名和密码判空
-                val username = etUsername?.text
+                // 用户名或密码判为空
+                val username = etUsername?.text?.toString()
                 if (username.isNullOrBlank()) {
                     Toast.makeText(this, getString(R.string.username_can_not_be_empty), Toast.LENGTH_SHORT).show()
                     return@onClick
                 }
-                val password = etPassword?.text
+                val password = etPassword?.text?.toString()
                 if (password.isNullOrBlank()) {
                     Toast.makeText(this, getString(R.string.password_can_not_be_empty), Toast.LENGTH_SHORT).show()
                     return@onClick
@@ -115,8 +114,8 @@ class LoginActivity : AppCompatActivity() {
 
                 // 使用 BmobSDK 提供的登录功能
                 val bmobUser = BmobUser()
-                bmobUser.username = username.toString()
-                bmobUser.setPassword(password.toString())
+                bmobUser.username = username
+                bmobUser.setPassword(password)
                 bmobUser.login(object : SaveListener<BmobUser?>() {
                     override fun done(bmobUser: BmobUser?, bmobException: BmobException?) {
                         if (bmobException == null) {

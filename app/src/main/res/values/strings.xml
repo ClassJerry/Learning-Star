@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Learning Star</string>
-    <string name="app_key">bd4814e57ed9c8f00aa0d119c5676cf9</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
@@ -8,6 +7,7 @@
     <string name="title_activity_find">Find</string>
 
     <!-- 用户登录和注册 -->
+    <string name="bmob_app_key">bd4814e57ed9c8f00aa0d119c5676cf9</string>
     <string name="username_can_not_be_empty">用户名不能为空</string>
     <string name="password_can_not_be_empty">密码不能为空</string>
     <string name="confirmation_password_can_not_be_empty">确认密码不能为空</string>
@@ -15,7 +15,7 @@
     <string name="login_successfully">登录成功</string>
     <string name="login_failure">登录失败</string>
     <string name="account_login">账号登录</string>
-    <string name="mobile_login">手机登录</string>
+    <string name="phone_login">手机登录</string>
     <string name="no_account_and_register">没有账户？/注册</string>
     <string name="username">用户名</string>
     <string name="password">密码</string>
@@ -24,4 +24,17 @@
     <string name="cancel">取消</string>
     <string name="register_successfully">注册成功</string>
     <string name="register_failure">注册失败</string>
+
+    <!-- 手机号登录 -->
+    <string name="smssdk_app_key">2839cb4b272a6</string>
+    <string name="smssdk_app_secret">cbfe853cb76be819d9349911b9d9a720</string>
+    <string name="phone_number_login">手机号登录</string>
+    <string name="please_input_your_phone_number">请输入你的手机号码</string>
+    <string name="please_input_your_verification_code">请输入你的验证码</string>
+    <string name="get_verification_code">获取验证码</string>
+    <string name="login">登&#160;&#160;&#160;&#160;录</string>
+    <string name="phone_number_can_not_be_empty">手机号不能为空</string>
+    <string name="length_of_phone_number_is_not_enough">手机号长度不够</string>
+    <string name="verification_code_can_not_be_empty">验证码不能为空</string>
+    <string name="length_of_verification_code_is_not_enough">验证码长度不够</string>
 </resources>

@@ -63,7 +63,7 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         // 初始化云存储
-        Bmob.initialize(this, getString(R.string.app_key))
+        Bmob.initialize(this, getString(R.string.bmob_app_key))
 
         // 绑定 view
         etUsername = findViewById(R.id.et_register_username)
@@ -86,33 +86,33 @@ class RegisterActivity : AppCompatActivity() {
      */
     private val onClickListener: (View?) -> Unit = onClick@ {
         if (it?.id == R.id.btn_register) {
-            // 用户名、密码和确认密码判空
-            val username = etUsername?.text
+            // 用户名、密码或确认密码为空
+            val username = etUsername?.text?.toString()
             if (username.isNullOrBlank()) {
                 Toast.makeText(this, getString(R.string.username_can_not_be_empty), Toast.LENGTH_SHORT).show()
                 return@onClick
             }
-            val password = etPassword?.text
+            val password = etPassword?.text?.toString()
             if (password.isNullOrBlank()) {
                 Toast.makeText(this, getString(R.string.password_can_not_be_empty), Toast.LENGTH_SHORT).show()
                 return@onClick
             }
-            val confirmationPassword = etConfirmationPassword?.text
+            val confirmationPassword = etConfirmationPassword?.text?.toString()
             if (confirmationPassword.isNullOrBlank()) {
                 Toast.makeText(this, getString(R.string.confirmation_password_can_not_be_empty), Toast.LENGTH_SHORT).show()
                 return@onClick
             }
 
             // 检查密码和确认密码是否一致
-            if (password.toString() != confirmationPassword.toString()) {
+            if (password != confirmationPassword) {
                 Toast.makeText(this, getString(R.string.password_and_confirmation_password_are_not_the_same), Toast.LENGTH_SHORT).show()
                 return@onClick
             }
 
             // 使用 BmobSDK 提供的注册功能
             val bmobUser = BmobUser()
-            bmobUser.username = username.toString()
-            bmobUser.setPassword(password.toString())
+            bmobUser.username = username
+            bmobUser.setPassword(password)
             bmobUser.signUp(object : SaveListener<BmobUser?>() {
                 override fun done(bmobUser: BmobUser?, bmobException: BmobException?) {
                     Toast.makeText(this@RegisterActivity, if (bmobException == null) getString(R.string.register_successfully) else getString(R.string.register_failure), Toast.LENGTH_SHORT).show()

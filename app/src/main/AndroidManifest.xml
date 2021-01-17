@@ -83,7 +83,7 @@
         <activity android:name="com.example.sht.learningstar.MainSide.KeXie" />
         <activity android:name="com.example.sht.learningstar.MainSide.NanFangZhouMo" />
         <activity android:name="com.example.sht.learningstar.MainSide.TexntMaps" />
-        <activity android:name="com.example.sht.learningstar.MobileLoad.MobileLoginActivity"/>
+        <activity android:name="com.example.sht.learningstar.PhoneLoginActivity"/>
     </application>
 
 </manifest>

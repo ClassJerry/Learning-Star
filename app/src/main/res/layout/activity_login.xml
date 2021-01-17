@@ -39,7 +39,7 @@
         android:textColor="#FFFFFFFF"
         android:background="@drawable/shape_button"
         android:textSize="15sp"
-        android:text="@string/mobile_login" />
+        android:text="@string/phone_login" />
 
     <EditText
         android:id="@+id/et_username"
