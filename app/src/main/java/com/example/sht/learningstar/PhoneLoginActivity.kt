@@ -1,11 +1,11 @@
 package com.example.sht.learningstar
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
 import android.support.v7.app.AppCompatActivity
-import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -73,7 +73,13 @@ class PhoneLoginActivity : AppCompatActivity() {
 
     // endregion
 
+    // region field
+
+    private val myHandler: MyHandler = MyHandler()
+
     private var eventHandler: EventHandler? = null
+
+    // endregion
 
     // region override
 
@@ -179,7 +185,10 @@ class PhoneLoginActivity : AppCompatActivity() {
 
     // endregion
 
-    var myHandler: Handler = object : Handler() {
+    // region inner
+
+    @SuppressLint("HandlerLeak")
+    inner class MyHandler : Handler() {
         override fun handleMessage(msg: Message) {
             when (msg.what) {
                 0x00 -> {
@@ -188,16 +197,19 @@ class PhoneLoginActivity : AppCompatActivity() {
                     val data = msg.obj
                     Log.e(TAG, "result : $result, event: $event, data : $data")
                     if (result == SMSSDK.RESULT_COMPLETE) { //回调  当返回的结果是complete
-                        if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) { //获取验证码
-                            Toast.makeText(this@PhoneLoginActivity, "发送验证码成功", Toast.LENGTH_SHORT).show()
-                            Log.d(TAG, "get verification code successful.")
-                        } else if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) { //提交验证码
-                            Log.d(TAG, "submit code successful")
-                            Toast.makeText(this@PhoneLoginActivity, "提交验证码成功", Toast.LENGTH_SHORT).show()
-                            val intent = Intent(this@PhoneLoginActivity, MainActivity::class.java)
-                            startActivity(intent)
-                        } else {
-                            Log.d(TAG, data.toString())
+                        when (event) {
+                            SMSSDK.EVENT_GET_VERIFICATION_CODE -> { //获取验证码
+                                Toast.makeText(this@PhoneLoginActivity, getString(R.string.send_verification_code_successfully), Toast.LENGTH_SHORT).show()
+                                Log.d(TAG, "get verification code successfully")
+                            }
+                            SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE -> { //提交验证码
+                                Toast.makeText(this@PhoneLoginActivity, getString(R.string.submit_verification_code_successfully), Toast.LENGTH_SHORT).show()
+                                Log.d(TAG, "submit verification code successfully")
+
+                                val intent = Intent(this@PhoneLoginActivity, MainActivity::class.java)
+                                startActivity(intent)
+                            }
+                            else -> Log.d(TAG, data.toString())
                         }
                     } else { //进行操作出错，通过下面的信息区分析错误原因
                         try {
@@ -208,21 +220,18 @@ class PhoneLoginActivity : AppCompatActivity() {
                             val status = `object`.optInt("status") //错误代码
                             //错误代码：  http://wiki.mob.com/android-api-%E9%94%99%E8%AF%AF%E7%A0%81%E5%8F%82%E8%80%83/
                             Log.e(TAG, "status: $status, detail: $des")
-                            if (status > 0 && !TextUtils.isEmpty(des)) {
-                                Toast.makeText(this@PhoneLoginActivity, des, Toast.LENGTH_SHORT).show()
-                                return
-                            }
-                        } catch (e: Exception) {
-                            e.printStackTrace()
-                        }
+                            if (status > 0 && !des.isNullOrEmpty()) Toast.makeText(this@PhoneLoginActivity, des, Toast.LENGTH_SHORT).show()
+                        } catch (e: Exception) { e.printStackTrace() }
                     }
                 }
-                0x01 -> tvGetVerificationCode!!.text = "重新发送" + msg.arg1 + ")"
+                0x01 -> tvGetVerificationCode?.text = getString(R.string.resend, msg.arg1)
                 0x02 -> {
-                    tvGetVerificationCode!!.text = "获取验证码"
-                    tvGetVerificationCode!!.isClickable = true
+                    tvGetVerificationCode?.text = getString(R.string.get_verification_code)
+                    tvGetVerificationCode?.isClickable = true
                 }
             }
         }
     }
+
+    // endregion
 }

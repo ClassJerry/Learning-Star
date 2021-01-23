@@ -37,4 +37,7 @@
     <string name="length_of_phone_number_is_not_enough">手机号长度不够</string>
     <string name="verification_code_can_not_be_empty">验证码不能为空</string>
     <string name="length_of_verification_code_is_not_enough">验证码长度不够</string>
+    <string name="send_verification_code_successfully">发送验证码成功</string>
+    <string name="submit_verification_code_successfully">提交验证码成功</string>
+    <string name="resend">重新发送%d</string>
 </resources>
