@@ -16,8 +16,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -28,56 +27,43 @@
                 app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
-
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content">
 
                     <ImageButton
                         android:id="@+id/search"
                         android:layout_width="0dp"
                         android:layout_height="30dp"
-                        android:layout_weight="10"
+                        android:layout_weight="1"
                         android:background="@drawable/shape_button_1"
+                        android:foregroundGravity="left"
                         android:src="@drawable/search"
-                        android:foregroundGravity="left" />
+                        tools:ignore="ContentDescription" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="2dp"
-                        android:layout_weight="1"/>
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2"
-                        android:gravity="center">
-
-                        <ImageButton
-                            android:id="@+id/toolbar_code"
-                            android:layout_width="match_parent"
-                            android:layout_height="25dp"
-                            android:src="@drawable/main_qr_code_1st"
-                            android:background="#00000000"
-                            android:scaleType="fitXY"/>
-
-                    </RelativeLayout>
+                    <ImageButton
+                        android:id="@+id/toolbar_code"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_gravity="center_vertical"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/main_qr_code_1st"
+                        android:background="#00000000"
+                        tools:ignore="ContentDescription" />
 
                 </LinearLayout>
 
-
-
             </android.support.v7.widget.Toolbar>
-
 
             <FrameLayout
                 android:id="@+id/fragment"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="11"
-                android:layout_below="@+id/toolbar">
-            </FrameLayout>
+                android:layout_weight="11" />
 
             <android.support.design.widget.BottomNavigationView
                 android:id="@+id/navigation"
@@ -85,7 +71,6 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="#e6ffffff"
-                android:layout_below="@+id/fragment"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -164,16 +149,6 @@
 
 
             </RelativeLayout>
-
-
-
-
-
-
-
-
-
-
 
 
             <LinearLayout

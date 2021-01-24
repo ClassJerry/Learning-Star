@@ -40,4 +40,9 @@
     <string name="send_verification_code_successfully">发送验证码成功</string>
     <string name="submit_verification_code_successfully">提交验证码成功</string>
     <string name="resend">重新发送%d</string>
+
+    <!-- 导航栏 -->
+    <string name="home_page">首页</string>
+    <string name="knowledge">知识</string>
+    <string name="mine">我的</string>
 </resources>

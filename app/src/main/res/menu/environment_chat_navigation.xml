@@ -2,20 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/save_environment"
-        android:icon="@drawable/environment_icon_1st"
-        android:title="首页" />
+        android:id="@+id/home_page"
+        android:icon="@drawable/home_page"
+        android:title="@string/home_page" />
 
     <item
-        android:id="@+id/chat"
-        android:icon="@drawable/chat_1st"
-        android:title="知识" />
+        android:id="@+id/knowledge"
+        android:icon="@drawable/knowledge"
+        android:title="@string/knowledge" />
 
     <item
-        android:id="@+id/multimedia"
-        android:icon="@drawable/multimedia_1st"
-        android:title="我的" />
-
-
+        android:id="@+id/mine"
+        android:icon="@drawable/mine"
+        android:title="@string/mine" />
 
 </menu>

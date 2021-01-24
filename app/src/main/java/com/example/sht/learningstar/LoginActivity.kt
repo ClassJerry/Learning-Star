@@ -122,8 +122,7 @@ class LoginActivity : AppCompatActivity() {
                             Toast.makeText(this@LoginActivity, getString(R.string.login_successfully), Toast.LENGTH_SHORT).show()
 
                             // 跳转主界面
-                            val loginIntent = Intent(this@LoginActivity, MainActivity::class.java)
-                            startActivity(loginIntent)
+                            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                         } else {
                             Toast.makeText(this@LoginActivity, getString(R.string.login_failure), Toast.LENGTH_SHORT).show()
                         }
